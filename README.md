@@ -26,23 +26,32 @@ npm run build
 
 Configured as a **static export**. Output is written to `out/`.
 
-## Deploy on Cloudflare Pages
+## Deploy on Cloudflare (Workers Builds)
 
-Do **not** use the “Next.js on Cloudflare / OpenNext” Workers preset — this site is static HTML.
+Your dashboard shows **Workers** settings (`npx wrangler deploy`), not classic Pages — that is why there is no “Build output directory” field.
 
-In Cloudflare Pages → project settings → Builds:
+Use these build settings:
 
 | Setting | Value |
 | --- | --- |
-| Framework preset | **None** (or Next.js static HTML export) |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Version command | `npx wrangler versions upload` (ok to leave) |
+| Root directory | `/` |
+| `NODE_VERSION` | `20` |
+
+`wrangler.toml` serves the static export from `./out` via Workers Static Assets. Do **not** enable OpenNext / “Next.js on Cloudflare” — this project uses `output: "export"`.
+
+### Easier alternative: Cloudflare Pages
+
+Workers & Pages → **Create** → **Pages** → Connect `tushar2393/uniintel`:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | None |
 | Build command | `npm run build` |
 | Build output directory | `out` |
-| Root directory | `/` (repo root) |
-| Environment variable | `NODE_VERSION` = `20` |
 
-Then reconnect the GitHub repo `tushar2393/uniintel` and redeploy.
-
-If a previous deploy used OpenNext and failed looking for `.next/standalone/.../pages-manifest.json`, switch the preset/output as above and retry — that error means Cloudflare tried a server adapter on a static export.
 
 ## Project structure
 
