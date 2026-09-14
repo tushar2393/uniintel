@@ -1,8 +1,6 @@
 # UnitIntel marketing site
 
-A production-ready single-page marketing website for **UnitIntel**, an AI
-integration consultancy focused on helping B2B teams reach **5x throughput** by
-removing repetitive work from existing workflows.
+Single-page marketing website for **UnitIntel**, an AI integration consultancy focused on helping B2B teams reach **5x throughput** by removing repetitive work from existing workflows.
 
 ## Stack
 
@@ -13,40 +11,42 @@ removing repetitive work from existing workflows.
 
 ## Local development
 
-Install dependencies:
-
 ```bash
 npm install
-```
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-Then open `http://localhost:3000`.
+Open `http://localhost:3000`.
 
 ## Production build
-
-Create a production build:
 
 ```bash
 npm run build
 ```
 
-The site is configured as a static export, so the generated output is written
-to `out/`.
+Configured as a **static export**. Output is written to `out/`.
 
-Serve the built site locally:
+## Deploy on Cloudflare Pages
 
-```bash
-npm run start
-```
+Do **not** use the “Next.js on Cloudflare / OpenNext” Workers preset — this site is static HTML.
+
+In Cloudflare Pages → project settings → Builds:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | **None** (or Next.js static HTML export) |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Root directory | `/` (repo root) |
+| Environment variable | `NODE_VERSION` = `20` |
+
+Then reconnect the GitHub repo `tushar2393/uniintel` and redeploy.
+
+If a previous deploy used OpenNext and failed looking for `.next/standalone/.../pages-manifest.json`, switch the preset/output as above and retry — that error means Cloudflare tried a server adapter on a static export.
 
 ## Project structure
 
-- `app/` - Next.js app router entrypoints and global styles
-- `components/marketing/` - landing page sections and marketing UI
-- `components/ui/` - shared UI primitives
-- `lib/` - small utilities
+- `app/` — App Router entrypoints and global styles
+- `components/marketing/` — landing page sections
+- `components/ui/` — shared UI primitives
+- `lib/` — small utilities
