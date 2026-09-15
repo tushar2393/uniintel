@@ -215,19 +215,19 @@ export function LandingPage() {
     <main className="relative">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-950"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
       >
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-background/[0.78] backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-line bg-panel/80 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex items-center justify-between gap-4 py-4">
             <Link
               href="#top"
-              className="flex min-w-0 items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 transition-colors hover:border-white/20 hover:bg-white/[0.05]"
+              className="flex min-w-0 items-center gap-3 rounded-full border border-line bg-panel px-3 py-2 transition-colors hover:border-black/20 hover:bg-panel-strong"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(140,255,214,0.95),rgba(247,198,120,0.95))] text-sm font-black tracking-tight text-slate-950">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-sm font-black tracking-tight text-white">
                 U
               </span>
               <span className="min-w-0">
@@ -242,13 +242,13 @@ export function LandingPage() {
 
             <nav
               aria-label="Primary"
-              className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-1 lg:flex"
+              className="hidden items-center gap-1 rounded-full border border-line bg-panel p-1 lg:flex"
             >
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-full px-4 py-2 text-sm text-mist transition-colors hover:bg-white/[0.05] hover:text-foreground"
+                  className="rounded-full px-4 py-2 text-sm text-mist transition-colors hover:bg-black/[0.04] hover:text-foreground"
                 >
                   {item.label}
                 </Link>
@@ -268,7 +268,7 @@ export function LandingPage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-sm text-mist transition-colors hover:border-white/[0.16] hover:text-foreground"
+                className="rounded-full border border-line bg-panel px-3 py-2 text-sm text-mist transition-colors hover:border-black/20 hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -277,8 +277,6 @@ export function LandingPage() {
         </div>
       </header>
 
-      <div className="pointer-events-none absolute inset-x-0 top-[-12rem] z-0 h-[34rem] bg-[radial-gradient(circle_at_top,rgba(123,247,210,0.16),transparent_42%),radial-gradient(circle_at_18%_26%,rgba(247,198,120,0.18),transparent_28%),radial-gradient(circle_at_82%_16%,rgba(93,134,255,0.16),transparent_24%)]" />
-
       <div id="main-content" className="relative z-10">
         <section
           id="top"
@@ -286,7 +284,7 @@ export function LandingPage() {
         >
           <div className="grid gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <motion.div {...fadeInUp} className="space-y-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+              <div className="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-accent-2">
                 <Stethoscope className="h-3.5 w-3.5" />
                 For specialty &amp; multi-site ambulatory clinics
               </div>
@@ -386,10 +384,10 @@ export function LandingPage() {
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-12"
         >
-          <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6 shadow-[0_24px_80px_rgba(3,7,18,0.45)] sm:p-8">
+          <div className="rounded-[2rem] border border-line bg-panel p-6 shadow-none sm:p-8">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl space-y-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-2">
                   Target metrics
                 </p>
                 <h2
@@ -413,9 +411,9 @@ export function LandingPage() {
               {goalMetrics.map((group) => (
                 <div
                   key={group.label}
-                  className="rounded-[1.5rem] border border-white/10 bg-slate-950/30 p-5"
+                  className="rounded-[1.5rem] border border-line bg-panel-strong p-5"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
                     {group.label}
                   </p>
                   <ul className="mt-4 space-y-2">
@@ -424,7 +422,7 @@ export function LandingPage() {
                         key={item}
                         className="flex items-center gap-2 text-sm text-mist"
                       >
-                        <CheckCircle2 className="h-4 w-4 shrink-0 text-accent" />
+                        <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground" />
                         {item}
                       </li>
                     ))}
@@ -450,15 +448,15 @@ export function LandingPage() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-[0_20px_60px_rgba(5,9,20,0.35)]"
+                className="overflow-hidden rounded-[2rem] border border-line bg-panel shadow-none"
               >
                 <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-                  <div className="space-y-5 border-b border-white/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                  <div className="space-y-5 border-b border-line p-6 sm:p-8 lg:border-b-0 lg:border-r">
                     <div className="flex flex-wrap items-center gap-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-panel-strong text-foreground">
                         <service.icon className="h-5 w-5" />
                       </div>
-                      <span className="rounded-full border border-accent/30 bg-accent/[0.08] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                      <span className="rounded-full border border-line bg-panel-strong px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
                         {service.badge}
                       </span>
                     </div>
@@ -469,14 +467,14 @@ export function LandingPage() {
                       {service.description}
                     </p>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
                         Goal metrics
                       </p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {service.metrics.map((metric) => (
                           <span
                             key={metric}
-                            className="rounded-full border border-white/10 bg-slate-950/40 px-3 py-1.5 text-sm text-slate-200"
+                            className="rounded-full border border-line bg-panel-strong px-3 py-1.5 text-sm text-foreground"
                           >
                             {metric}
                           </span>
@@ -486,16 +484,16 @@ export function LandingPage() {
                   </div>
 
                   <div className="space-y-3 p-6 sm:p-8">
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
                       Typical flow
                     </p>
                     <ol className="space-y-3">
                       {service.flow.map((step, index) => (
                         <li
                           key={step}
-                          className="flex gap-3 rounded-[1.25rem] border border-white/10 bg-slate-950/30 p-4"
+                          className="flex gap-3 rounded-[1.25rem] border border-line bg-panel-strong p-4"
                         >
-                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-xs font-semibold text-accent">
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line bg-panel text-xs font-semibold text-foreground">
                             {index + 1}
                           </span>
                           <span className="text-sm leading-7 text-mist">
@@ -526,9 +524,9 @@ export function LandingPage() {
             {workflowSteps.map((step) => (
               <div
                 key={step.number}
-                className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_rgba(5,9,20,0.35)]"
+                className="rounded-[1.75rem] border border-line bg-panel p-6 shadow-none"
               >
-                <p className="text-sm font-semibold tracking-[0.28em] text-accent-2">
+                <p className="text-sm font-semibold tracking-[0.28em] text-mist">
                   {step.number}
                 </p>
                 <h3 className="mt-5 text-xl font-semibold text-foreground">
@@ -557,12 +555,12 @@ export function LandingPage() {
             {offerItems.map((item) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_rgba(5,9,20,0.3)]"
+                className="flex flex-col rounded-[1.75rem] border border-line bg-panel p-6 shadow-none"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-panel-strong text-foreground">
                   <item.icon className="h-5 w-5" />
                 </div>
-                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
+                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-mist">
                   {item.detail}
                 </p>
                 <h3 className="mt-3 text-xl font-semibold text-foreground">
@@ -592,10 +590,10 @@ export function LandingPage() {
               {differentiators.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+                  className="rounded-[1.75rem] border border-line bg-panel p-6"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-panel-strong text-foreground">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <div className="space-y-3">
@@ -618,8 +616,8 @@ export function LandingPage() {
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
         >
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+          <div className="rounded-[2rem] border border-line bg-panel p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-2">
               Proof
             </p>
             <h2
@@ -645,7 +643,7 @@ export function LandingPage() {
               ].map((area) => (
                 <div
                   key={area}
-                  className="rounded-full border border-white/10 bg-slate-950/40 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-slate-200"
+                  className="rounded-full border border-line bg-panel-strong px-5 py-3 text-sm font-semibold tracking-[0.08em] text-foreground"
                 >
                   {area}
                 </div>
@@ -659,45 +657,44 @@ export function LandingPage() {
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
         >
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(140,255,214,0.16),rgba(247,198,120,0.08),rgba(255,255,255,0.02))] p-8 shadow-[0_24px_80px_rgba(3,7,18,0.5)] sm:p-10 lg:p-12">
-            <div className="absolute right-[-6rem] top-[-6rem] h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(140,255,214,0.22),transparent_65%)]" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-line bg-panel p-8 shadow-none sm:p-10 lg:p-12">
             <div className="relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
               <div className="max-w-3xl space-y-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-2">
                   Book a discovery call
                 </p>
                 <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                   Bring one prior-auth or referral queue. We&apos;ll map where
                   capacity is leaking.
                 </h2>
-                <p className="text-lg leading-8 text-slate-100/[0.88]">
+                <p className="text-lg leading-8 text-mist">
                   45-minute workflow discovery for specialty and multi-site
                   ambulatory clinics. If it&apos;s a fit, the next step is a
                   paid pilot / throughput audit, then a fixed-scope 4–6 week
                   sprint on one queue.
                 </p>
 
-                <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/[0.4] p-4 sm:p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-2">
+                <div className="rounded-[1.25rem] border border-line bg-panel-strong p-4 sm:p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-mist">
                     Typical starting point
                   </p>
                   <ul className="mt-4 space-y-3 text-sm leading-7 text-mist">
                     <li className="flex gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-foreground" />
                       45-minute specialty-clinic workflow discovery
                     </li>
                     <li className="flex gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-foreground" />
                       Pilot engagement — baseline hours and first sprint plan
                     </li>
                     <li className="flex gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-foreground" />
                       Fixed-scope 4–6 week sprint (PA or referrals)
                     </li>
                   </ul>
                 </div>
 
-                <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/[0.4] p-4 sm:p-5">
+                <div className="rounded-[1.25rem] border border-line bg-panel-strong p-4 sm:p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
                     Founder
                   </p>
@@ -708,7 +705,7 @@ export function LandingPage() {
                   <div className="mt-4 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                     <a
                       href="mailto:tushar@uniintel.org"
-                      className="inline-flex items-center gap-2 text-accent transition-colors hover:text-foreground"
+                      className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-mist"
                     >
                       <Mail className="h-4 w-4" />
                       tushar@uniintel.org
@@ -717,7 +714,7 @@ export function LandingPage() {
                       href="https://www.linkedin.com/in/tushar-khandelwal/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-accent transition-colors hover:text-foreground"
+                      className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-mist"
                     >
                       <ExternalLink className="h-4 w-4" />
                       LinkedIn
@@ -727,7 +724,7 @@ export function LandingPage() {
               </div>
 
               <div className="space-y-4">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-2">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-mist">
                   Tell us about your queue
                 </p>
                 <DiscoveryForm />
@@ -736,7 +733,7 @@ export function LandingPage() {
           </div>
         </motion.section>
 
-        <footer className="border-t border-white/[0.08]">
+        <footer className="border-t border-line">
           <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 text-sm text-mist sm:px-6 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <p className="font-semibold uppercase tracking-[0.18em] text-foreground">
@@ -813,8 +810,8 @@ export function LandingPage() {
 
 function BulletPoint({ text }: { text: string }) {
   return (
-    <li className="flex items-start gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.02] px-4 py-3">
-      <CheckCircle2 className="mt-0.5 h-4 w-4 text-accent" />
+    <li className="flex items-start gap-3 rounded-2xl border border-line bg-panel px-4 py-3">
+      <CheckCircle2 className="mt-0.5 h-4 w-4 text-foreground" />
       <span>{text}</span>
     </li>
   );
@@ -830,8 +827,8 @@ function IconCard({
   description: string;
 }) {
   return (
-    <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_rgba(5,9,20,0.3)]">
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent">
+    <div className="rounded-[1.75rem] border border-line bg-panel p-6 shadow-none">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-panel-strong text-foreground">
         <Icon className="h-5 w-5" />
       </div>
       <h3 className="mt-5 text-xl font-semibold text-foreground">{title}</h3>
@@ -850,8 +847,8 @@ function FeaturePanel({
   description: string;
 }) {
   return (
-    <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-5">
-      <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent-2">
+    <div className="rounded-[1.75rem] border border-line bg-panel p-5">
+      <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-line bg-panel-strong text-foreground">
         <Icon className="h-5 w-5" />
       </div>
       <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
@@ -867,19 +864,17 @@ function HeroVisual() {
       transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}
       className="relative"
     >
-      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_10%_10%,rgba(140,255,214,0.18),transparent_28%),radial-gradient(circle_at_88%_18%,rgba(247,198,120,0.14),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(84,126,255,0.14),transparent_28%)] blur-2xl" />
-
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(17,27,40,0.95),rgba(7,13,21,0.92))] p-5 shadow-[0_30px_100px_rgba(3,7,18,0.55)] sm:p-6">
-        <div className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-white/[0.08] pb-4">
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-line bg-panel p-5 shadow-none sm:p-6">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-line pb-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-accent">
+            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-accent-2">
               Prior-auth packet prep
             </p>
             <p className="mt-2 text-sm text-mist">
               Assemble · stage · human sign-off.
             </p>
           </div>
-          <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-mist">
+          <div className="rounded-full border border-line bg-panel-strong px-3 py-1 text-xs text-mist">
             specialty clinic
           </div>
         </div>
@@ -900,7 +895,7 @@ function HeroVisual() {
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 3.4, repeat: Number.POSITIVE_INFINITY }}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-foreground"
+                className="rounded-full border border-line bg-panel-strong px-3 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-foreground"
               >
                 Uniintel
               </motion.div>
@@ -950,11 +945,11 @@ function SignalColumn({
 }) {
   const badgeClass =
     color === "accent"
-      ? "bg-accent/[0.14] text-accent"
-      : "bg-accent-2/[0.14] text-accent-2";
+      ? "bg-foreground text-white"
+      : "bg-panel text-mist border border-line";
 
   return (
-    <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-4">
+    <div className="rounded-[1.75rem] border border-line bg-panel-strong p-4">
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-foreground">{title}</p>
         <span
@@ -971,7 +966,7 @@ function SignalColumn({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ delay: index * 0.08, duration: 0.45 }}
-            className="rounded-2xl border border-white/[0.08] bg-slate-950/[0.35] px-3 py-3 text-sm text-slate-100"
+            className="rounded-2xl border border-line bg-panel px-3 py-3 text-sm text-foreground"
           >
             {item}
           </motion.div>
@@ -998,7 +993,7 @@ function MiniMetric({
         : "text-foreground";
 
   return (
-    <div className="rounded-[1.4rem] border border-white/10 bg-slate-950/[0.35] p-4">
+    <div className="rounded-[1.4rem] border border-line bg-panel-strong p-4">
       <p className={`text-2xl font-semibold tracking-[-0.04em] ${valueClass}`}>
         {value}
       </p>

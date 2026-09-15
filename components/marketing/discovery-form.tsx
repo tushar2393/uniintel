@@ -91,9 +91,9 @@ function buildMailto(values: FormState): string {
 }
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-mist/60 focus:border-accent/50 focus:ring-2 focus:ring-accent/30";
+  "mt-2 w-full rounded-xl border border-line bg-panel px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-mist/70 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15";
 
-const labelClass = "block text-sm font-medium text-slate-200";
+const labelClass = "block text-sm font-medium text-foreground";
 
 export function DiscoveryForm({ className }: { className?: string }) {
   const formId = useId();
@@ -143,7 +143,7 @@ export function DiscoveryForm({ className }: { className?: string }) {
       noValidate
       onSubmit={handleSubmit}
       className={cn(
-        "space-y-5 rounded-[1.5rem] border border-white/10 bg-slate-950/[0.45] p-5 sm:p-6",
+        "space-y-5 rounded-[1.5rem] border border-line bg-panel p-5 shadow-none sm:p-6",
         className,
       )}
       aria-describedby={submitted ? `${formId}-success` : undefined}
@@ -322,7 +322,7 @@ export function DiscoveryForm({ className }: { className?: string }) {
           <p
             id={`${formId}-success`}
             role="status"
-            className="text-sm text-accent"
+            className="text-sm text-mist"
           >
             Opening your email app with the details filled in…
           </p>
@@ -352,7 +352,7 @@ function Field({
       <label htmlFor={id} className={labelClass}>
         {label}
         {required ? (
-          <span className="text-accent" aria-hidden="true">
+          <span className="text-foreground" aria-hidden="true">
             {" "}
             *
           </span>
