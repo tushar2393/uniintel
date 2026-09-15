@@ -1,6 +1,6 @@
-# UnitIntel marketing site
+# Uniintel marketing site
 
-Single-page marketing website for **UnitIntel**, which helps **specialty and multi-site ambulatory clinics** reclaim capacity on prior-auth packet prep, referral chase, and inbox triage — inside the EHR, portals, fax, and email they already run, with human checkpoints.
+Single-page marketing website for **Uniintel**, which helps **specialty and multi-site ambulatory clinics** reclaim capacity on prior-auth packet prep, referral chase, and inbox triage — inside the EHR, portals, fax, and email they already run, with human checkpoints.
 
 **Not in scope:** credentialing / payer enrollment, hospital enterprise platforms, telehealth brands, or generic “AI for any ops team” positioning.
 
@@ -64,5 +64,5 @@ Workers & Pages → **Create** → **Pages** → Connect `tushar2393/uniintel`:
 ## Offer (site copy)
 
 - 45-minute workflow discovery → `mailto:tushar@uniintel.org`
-- Paid 5-day throughput audit ($2.5–5k)
+- Paid pilot / throughput audit (pilot engagement — baseline hours and first sprint plan)
 - Fixed-scope 4–6 week sprint on one queue (PA or referrals)

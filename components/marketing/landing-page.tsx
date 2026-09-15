@@ -22,6 +22,7 @@ import {
   UserCheck,
 } from "lucide-react";
 
+import { DiscoveryForm } from "@/components/marketing/discovery-form";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { Button } from "@/components/ui/button";
 
@@ -145,7 +146,7 @@ const differentiators = [
     icon: Network,
     title: "Capacity, not another platform",
     description:
-      "Specialty clinics don’t need a rip-and-replace. UnitIntel maps the workflows that burn front office and RCM, then wires AI into EHR, portals, fax, and email you already run.",
+      "Specialty clinics don’t need a rip-and-replace. Uniintel maps the workflows that burn front office and RCM, then wires AI into EHR, portals, fax, and email you already run.",
   },
   {
     icon: ShieldCheck,
@@ -171,10 +172,10 @@ const offerItems = [
   },
   {
     icon: TimerReset,
-    title: "Paid 5-day throughput audit",
+    title: "Paid pilot / throughput audit",
     description:
-      "Baseline hours, failure points, and a first sprint plan for one specialty-clinic queue.",
-    detail: "$2.5–5k",
+      "Pilot engagement — baseline hours, failure points, and a first sprint plan for one specialty-clinic queue.",
+    detail: "Pilot engagement",
   },
   {
     icon: Stethoscope,
@@ -207,8 +208,7 @@ const fadeInUp = {
   transition: { duration: 0.55, ease: "easeOut" },
 } as const;
 
-const primaryCta =
-  "mailto:tushar@uniintel.org?subject=Discovery%20call%20%E2%80%94%20specialty%20clinic%20workflow";
+const primaryCta = "#discovery-form";
 
 export function LandingPage() {
   return (
@@ -232,7 +232,7 @@ export function LandingPage() {
               </span>
               <span className="min-w-0">
                 <span className="block truncate text-sm font-semibold tracking-[0.18em] text-foreground">
-                  UNITINTEL
+                  Uniintel
                 </span>
                 <span className="block truncate text-xs text-mist">
                   Specialty clinic capacity
@@ -297,7 +297,7 @@ export function LandingPage() {
                   EHR.
                 </h1>
                 <p className="max-w-2xl text-pretty text-lg leading-8 text-mist sm:text-xl">
-                  UnitIntel helps specialty clinics automate prior-auth packet
+                  Uniintel helps specialty clinics automate prior-auth packet
                   prep, referral chase, and inbox triage inside the tools they
                   already run — with human checkpoints.
                 </p>
@@ -353,7 +353,7 @@ export function LandingPage() {
             <SectionHeading
               eyebrow="Positioning"
               title="You don’t need another platform. You need capacity."
-              description="UnitIntel maps the workflows that burn front office and RCM — prior-auth packet prep, referral chase, inbox triage — then wires AI into existing EHR, portals, fax, and email so staff only touch exceptions."
+              description="Uniintel maps the workflows that burn front office and RCM — prior-auth packet prep, referral chase, inbox triage — then wires AI into existing EHR, portals, fax, and email so staff only touch exceptions."
             />
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -549,8 +549,8 @@ export function LandingPage() {
         >
           <SectionHeading
             eyebrow="Offer"
-            title="Discovery → audit → one fixed-scope sprint."
-            description="Start with a 45-minute workflow discovery. If the queue is real, a paid 5-day throughput audit baselines hours and failure points, then a 4–6 week sprint ships the first automation."
+            title="Discovery → pilot → one fixed-scope sprint."
+            description="Start with a 45-minute workflow discovery. If the queue is real, a paid pilot / throughput audit baselines hours and failure points, then a 4–6 week sprint ships the first automation."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -577,13 +577,13 @@ export function LandingPage() {
         </motion.section>
 
         <motion.section
-          id="why-unitintel"
+          id="why-uniintel"
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
         >
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
             <SectionHeading
-              eyebrow="Why UnitIntel"
+              eyebrow="Why Uniintel"
               title="Built for specialty clinic ops — not generic B2B busywork."
               description="ICP is physical specialty and multi-site ambulatory clinics: practice admins, office managers, RCM and ops leads. Not telehealth brands, not hospital enterprise platforms, not another “AI for any ops team” pitch."
             />
@@ -661,7 +661,7 @@ export function LandingPage() {
         >
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(140,255,214,0.16),rgba(247,198,120,0.08),rgba(255,255,255,0.02))] p-8 shadow-[0_24px_80px_rgba(3,7,18,0.5)] sm:p-10 lg:p-12">
             <div className="absolute right-[-6rem] top-[-6rem] h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(140,255,214,0.22),transparent_65%)]" />
-            <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
               <div className="max-w-3xl space-y-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
                   Book a discovery call
@@ -673,20 +673,30 @@ export function LandingPage() {
                 <p className="text-lg leading-8 text-slate-100/[0.88]">
                   45-minute workflow discovery for specialty and multi-site
                   ambulatory clinics. If it&apos;s a fit, the next step is a
-                  paid 5-day throughput audit ($2.5–5k) and a fixed-scope
-                  4–6 week sprint on one queue.
+                  paid pilot / throughput audit, then a fixed-scope 4–6 week
+                  sprint on one queue.
                 </p>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <Button asChild size="lg">
-                    <a href={primaryCta}>
-                      Book a discovery call
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
-                  </Button>
-                  <Button asChild size="lg" variant="secondary">
-                    <a href="mailto:tushar@uniintel.org">tushar@uniintel.org</a>
-                  </Button>
+
+                <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/[0.4] p-4 sm:p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-2">
+                    Typical starting point
+                  </p>
+                  <ul className="mt-4 space-y-3 text-sm leading-7 text-mist">
+                    <li className="flex gap-3">
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      45-minute specialty-clinic workflow discovery
+                    </li>
+                    <li className="flex gap-3">
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      Pilot engagement — baseline hours and first sprint plan
+                    </li>
+                    <li className="flex gap-3">
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      Fixed-scope 4–6 week sprint (PA or referrals)
+                    </li>
+                  </ul>
                 </div>
+
                 <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/[0.4] p-4 sm:p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
                     Founder
@@ -694,7 +704,7 @@ export function LandingPage() {
                   <p className="mt-3 text-lg font-semibold text-foreground">
                     Tushar Khandelwal
                   </p>
-                  <p className="mt-1 text-sm text-mist">Founder, UnitIntel</p>
+                  <p className="mt-1 text-sm text-mist">Founder, Uniintel</p>
                   <div className="mt-4 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                     <a
                       href="mailto:tushar@uniintel.org"
@@ -716,24 +726,11 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/[0.55] p-5 lg:min-w-[21rem]">
+              <div className="space-y-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-2">
-                  Typical starting point
+                  Tell us about your queue
                 </p>
-                <ul className="mt-4 space-y-3 text-sm leading-7 text-mist">
-                  <li className="flex gap-3">
-                    <CheckCircle2 className="mt-1 h-4 w-4 text-accent" />
-                    45-minute specialty-clinic workflow discovery
-                  </li>
-                  <li className="flex gap-3">
-                    <CheckCircle2 className="mt-1 h-4 w-4 text-accent" />
-                    Paid 5-day throughput audit ($2.5–5k)
-                  </li>
-                  <li className="flex gap-3">
-                    <CheckCircle2 className="mt-1 h-4 w-4 text-accent" />
-                    Fixed-scope 4–6 week sprint (PA or referrals)
-                  </li>
-                </ul>
+                <DiscoveryForm />
               </div>
             </div>
           </div>
@@ -743,14 +740,14 @@ export function LandingPage() {
           <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 text-sm text-mist sm:px-6 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <p className="font-semibold uppercase tracking-[0.18em] text-foreground">
-                UnitIntel
+                Uniintel
               </p>
               <p className="mt-2">
                 Specialty clinic capacity — prior-auth, referrals, inbox.
               </p>
               <div className="mt-5 space-y-1">
                 <p className="font-semibold text-foreground">Tushar Khandelwal</p>
-                <p>Founder, UnitIntel</p>
+                <p>Founder, Uniintel</p>
                 <a
                   href="mailto:tushar@uniintel.org"
                   className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
@@ -905,7 +902,7 @@ function HeroVisual() {
                 transition={{ duration: 3.4, repeat: Number.POSITIVE_INFINITY }}
                 className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-foreground"
               >
-                UnitIntel
+                Uniintel
               </motion.div>
             </div>
             <SignalColumn

@@ -15,9 +15,9 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title:
-    "UnitIntel | Prior-auth & referral capacity for specialty clinics",
+    "Uniintel | Prior-auth & referral capacity for specialty clinics",
   description:
-    "UnitIntel helps specialty and multi-site ambulatory clinics cut prior-auth packet prep, referral chase, and inbox triage — inside the EHR, portals, fax, and email they already run, with human checkpoints. No credentialing. Book a 45-minute workflow discovery.",
+    "Uniintel helps specialty and multi-site ambulatory clinics cut prior-auth packet prep, referral chase, and inbox triage — inside the EHR, portals, fax, and email they already run, with human checkpoints. No credentialing. Book a 45-minute workflow discovery.",
   keywords: [
     "specialty clinic prior authorization",
     "referral chase automation",
