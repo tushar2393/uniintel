@@ -5,25 +5,21 @@ import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
-  BarChart3,
-  Bot,
-  BriefcaseBusiness,
-  Building2,
   CheckCircle2,
-  Compass,
-  FileStack,
-  Gauge,
-  Headphones,
-  Layers3,
+  ClipboardCheck,
   ExternalLink,
+  FileStack,
+  Inbox,
   Mail,
-  MessageSquareQuote,
   Network,
+  PhoneCall,
+  RefreshCw,
   ScanSearch,
+  Send,
   ShieldCheck,
-  Sparkles,
+  Stethoscope,
   TimerReset,
-  Users,
+  UserCheck,
 } from "lucide-react";
 
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -31,141 +27,176 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Problem", href: "#problem" },
-  { label: "Process", href: "#how-it-works" },
-  { label: "Use cases", href: "#use-cases" },
-  { label: "Why UnitIntel", href: "#why-unitintel" },
+  { label: "What we do", href: "#what-we-do" },
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Offer", href: "#offer" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
 const problemCards = [
   {
-    icon: TimerReset,
-    title: "Hours disappear into repeat work",
+    icon: FileStack,
+    title: "Prior-auth packets eat hours",
     description:
-      "Leaders and operators still spend valuable time triaging inboxes, chasing updates, rebuilding reports, and moving data between tools.",
+      "Chart pulls, packet assembly, portal uploads, and status chase land on the same few people. Hours-per-auth climb while days-to-decision stretch.",
   },
   {
-    icon: Layers3,
-    title: "Context switching slows everyone down",
+    icon: RefreshCw,
+    title: "Referrals stall and leak",
     description:
-      "When people are stuck copy-pasting between systems, the team loses focus, judgment, and momentum on the work that actually compounds.",
+      "Inbound fax, PDF, and email referrals sit incomplete. Missing-info chase and patient outreach compete with the schedule — leakage follows.",
   },
   {
-    icon: Gauge,
-    title: "Growth gets capped by busywork",
+    icon: Inbox,
+    title: "Inbox noise crowds the day",
     description:
-      "As volume rises, headcount becomes the default answer. Margins tighten, service slips, and strategic work keeps getting pushed out.",
+      "Portal messages, In Basket, and email mix routine noise with real work. Front office and RCM spend staff touches sorting instead of closing queues.",
   },
 ] as const;
 
-const outcomeStats = [
-  { value: "5x", label: "Throughput on repetitive operational workflows" },
-  { value: "-72%", label: "Manual touches across common process handoffs" },
-  { value: "<24h", label: "Time to first automation prototype in a focused sprint" },
-  { value: "+14h", label: "Weekly leadership capacity reclaimed per team lead" },
+const services = [
+  {
+    icon: ClipboardCheck,
+    badge: "Primary",
+    title: "Prior-auth packet prep + status chase",
+    description:
+      "Chart pull → packet assembly → portal/fax staging → follow-ups. Staff only touch exceptions; clinical submit stays behind a human checkpoint.",
+    metrics: [
+      "Hours per auth",
+      "Days-to-decision",
+      "Staff touches per auth",
+    ],
+    flow: [
+      "Pull chart elements for the auth type",
+      "Assemble the packet against payer rules",
+      "Stage for portal or fax",
+      "Chase status; escalate only exceptions",
+      "Human sign-off before clinical submit",
+    ],
+  },
+  {
+    icon: Send,
+    badge: "Co-lead",
+    title: "Referral chase",
+    description:
+      "Inbound fax/PDF/email → missing-info chase → patient outreach → schedule → close the loop with the referring office.",
+    metrics: [
+      "% referrals scheduled",
+      "Time-to-schedule",
+      "Referral leakage",
+    ],
+    flow: [
+      "Ingest fax, PDF, and email referrals",
+      "Flag missing demographics and clinical info",
+      "Chase referring office and patient",
+      "Get on the schedule",
+      "Close the loop with the referrer",
+    ],
+  },
+  {
+    icon: Inbox,
+    badge: "Secondary · expand after win",
+    title: "Inbox triage",
+    description:
+      "Route, draft, and prioritize portal, email, and In Basket noise so the team sees what needs a human first. Expand after a PA or referral win — not the tip of the spear.",
+    metrics: [
+      "Messages triaged / day",
+      "Time-to-first-response",
+      "Exception rate",
+    ],
+    flow: [
+      "Classify inbound portal / email / In Basket",
+      "Prioritize what needs a person today",
+      "Draft routine replies for review",
+      "Route the rest to the right queue",
+    ],
+  },
 ] as const;
 
 const workflowSteps = [
   {
     number: "01",
-    title: "Map the drag",
+    title: "Map the queue that burns capacity",
     description:
-      "We pinpoint where repetitive work, delays, and context switching are stealing capacity across your current tools and teams.",
+      "We sit with practice admins, office managers, and RCM/ops leads to map prior-auth, referral, or inbox work — hours, failure points, and handoffs across EHR, portals, fax, and email.",
   },
   {
     number: "02",
-    title: "Design the workflow layer",
+    title: "Design AI inside the stack you already run",
     description:
-      "UnitIntel defines the AI-assisted orchestration: what should be automated, what stays human, and how data moves cleanly end to end.",
+      "No new platform. We wire drafting, assembly, chase, and triage into existing EHR, payer portals, fax, and email — with human checkpoints where clinical or patient risk matters.",
   },
   {
     number: "03",
-    title: "Integrate into the stack you already run",
+    title: "Ship one fixed-scope sprint",
     description:
-      "We connect AI into your CRM, help desk, internal docs, spreadsheets, email, and ops tooling instead of forcing a platform rip-and-replace.",
+      "A 4–6 week sprint on one queue (PA or referrals). Baseline metrics, clear acceptance criteria, and staff only touching exceptions.",
   },
   {
     number: "04",
-    title: "Tune for reliability and scale",
+    title: "Measure and expand",
     description:
-      "We monitor quality, tighten prompts and rules, add guardrails, and keep the system useful as your workflows evolve.",
-  },
-] as const;
-
-const useCases = [
-  {
-    icon: BriefcaseBusiness,
-    title: "Operations",
-    description:
-      "Automate approvals, handoffs, order updates, SOP lookups, and recurring coordination work across systems.",
-  },
-  {
-    icon: Headphones,
-    title: "Support",
-    description:
-      "Draft replies, summarize tickets, route issues, surface knowledge, and reduce handle time without losing judgment.",
-  },
-  {
-    icon: Building2,
-    title: "Sales and admin",
-    description:
-      "Clean CRM data, prep account briefs, generate follow-ups, and remove the admin drag around pipeline movement.",
-  },
-  {
-    icon: BarChart3,
-    title: "Finance and reporting",
-    description:
-      "Compile recurring reports, flag anomalies, reconcile narratives, and cut the manual work behind executive visibility.",
-  },
-  {
-    icon: FileStack,
-    title: "Product and research",
-    description:
-      "Cluster feedback, summarize calls, extract themes, and turn signal into sharper roadmap decisions faster.",
-  },
-  {
-    icon: Users,
-    title: "Leadership workflows",
-    description:
-      "Prepare meeting briefs, surface blockers, roll up KPIs, and keep decision-makers focused on the next leverage point.",
+      "Track hours per auth, days-to-decision, % referrals scheduled, leakage, and staff touches. Expand to the next queue only after the first win holds.",
   },
 ] as const;
 
 const differentiators = [
   {
     icon: Network,
-    title: "Embedded in workflows, not bolted on top",
+    title: "Capacity, not another platform",
     description:
-      "The value comes from fitting AI into the way your business already runs. Adoption gets easier because the work stays familiar.",
+      "Specialty clinics don’t need a rip-and-replace. UnitIntel maps the workflows that burn front office and RCM, then wires AI into EHR, portals, fax, and email you already run.",
   },
   {
     icon: ShieldCheck,
-    title: "Human control where it matters",
+    title: "Human checkpoints on clinical submit",
     description:
-      "We automate the repetitive parts and keep review, escalation, and final judgment with the people who own outcomes.",
+      "AI assembles, drafts, and chases. People sign off before clinical prior-auth submit and before anything patient-facing goes out.",
   },
   {
     icon: ScanSearch,
-    title: "Operational clarity over demo theatre",
+    title: "Metric-led, not AI theatre",
     description:
-      "UnitIntel focuses on measurable throughput, response time, and capacity gains instead of flashy prototypes with no production path.",
+      "We optimize for hours per auth, days-to-decision, % referrals scheduled, time-to-schedule, and leakage — not demos that never reach the queue.",
   },
 ] as const;
 
-const logos = ["Northstar", "Aster", "Meridian", "Forge", "Summit", "Cinder"] as const;
-
-const quotes = [
+const offerItems = [
   {
-    quote:
-      "UnitIntel removed the reporting and follow-up busywork that used to eat half our week. The team now spends that time on customers and expansion.",
-    name: "Placeholder client example",
-    role: "COO, vertical SaaS company",
+    icon: PhoneCall,
+    title: "45-minute workflow discovery",
+    description:
+      "Walk one prior-auth or referral queue end-to-end. Leave with a clear picture of where capacity is leaking.",
+    detail: "Free · discovery call",
   },
   {
-    quote:
-      "Instead of hiring around broken workflows, we used AI to tighten them. Throughput jumped, response times dropped, and leaders got time back.",
-    name: "Placeholder client example",
-    role: "Founder, B2B services business",
+    icon: TimerReset,
+    title: "Paid 5-day throughput audit",
+    description:
+      "Baseline hours, failure points, and a first sprint plan for one specialty-clinic queue.",
+    detail: "$2.5–5k",
+  },
+  {
+    icon: Stethoscope,
+    title: "Fixed-scope 4–6 week sprint",
+    description:
+      "One queue — prior-auth packet prep or referral chase — wired into your existing tools with human checkpoints.",
+    detail: "PA or referrals",
+  },
+] as const;
+
+const goalMetrics = [
+  {
+    label: "Prior-auth",
+    items: ["Hours per auth", "Days-to-decision", "Staff touches"],
+  },
+  {
+    label: "Referrals",
+    items: ["% scheduled", "Time-to-schedule", "Leakage"],
+  },
+  {
+    label: "Inbox (later)",
+    items: ["Triage volume", "Time-to-response", "Exception rate"],
   },
 ] as const;
 
@@ -177,7 +208,7 @@ const fadeInUp = {
 } as const;
 
 const primaryCta =
-  "mailto:tushar@uniintel.org?subject=Discovery%20call%20for%20AI%20throughput%20audit";
+  "mailto:tushar@uniintel.org?subject=Discovery%20call%20%E2%80%94%20specialty%20clinic%20workflow";
 
 export function LandingPage() {
   return (
@@ -204,7 +235,7 @@ export function LandingPage() {
                   UNITINTEL
                 </span>
                 <span className="block truncate text-xs text-mist">
-                  5x throughput. Zero busywork.
+                  Specialty clinic capacity
                 </span>
               </span>
             </Link>
@@ -249,46 +280,45 @@ export function LandingPage() {
       <div className="pointer-events-none absolute inset-x-0 top-[-12rem] z-0 h-[34rem] bg-[radial-gradient(circle_at_top,rgba(123,247,210,0.16),transparent_42%),radial-gradient(circle_at_18%_26%,rgba(247,198,120,0.18),transparent_28%),radial-gradient(circle_at_82%_16%,rgba(93,134,255,0.16),transparent_24%)]" />
 
       <div id="main-content" className="relative z-10">
-        <section id="top" className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 lg:pb-24 lg:pt-20">
+        <section
+          id="top"
+          className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 lg:pb-24 lg:pt-20"
+        >
           <div className="grid gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <motion.div {...fadeInUp} className="space-y-8">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-accent">
-                <Sparkles className="h-3.5 w-3.5" />
-                AI integration consultancy for growth-stage B2B teams
+                <Stethoscope className="h-3.5 w-3.5" />
+                For specialty &amp; multi-site ambulatory clinics
               </div>
 
               <div className="space-y-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent-2">
-                  5x throughput. Zero busywork.
-                </p>
                 <h1 className="max-w-3xl text-balance text-5xl font-semibold tracking-[-0.06em] text-foreground sm:text-6xl lg:text-7xl">
-                  Turn repetitive work into invisible systems.
+                  Cut prior-auth and referral busywork without replacing your
+                  EHR.
                 </h1>
                 <p className="max-w-2xl text-pretty text-lg leading-8 text-mist sm:text-xl">
-                  UnitIntel integrates AI into the workflows your team already runs
-                  so ops, support, reporting, follow-up, and internal execution
-                  move dramatically faster. The result is higher throughput, less
-                  manual drag, and more time spent on strategy, customers, and
-                  growth.
+                  UnitIntel helps specialty clinics automate prior-auth packet
+                  prep, referral chase, and inbox triage inside the tools they
+                  already run — with human checkpoints.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
                   <a href={primaryCta}>
-                    Get a throughput audit
+                    Book a discovery call
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="secondary">
-                  <Link href="#how-it-works">See how UnitIntel works</Link>
+                  <Link href="#what-we-do">See what we automate</Link>
                 </Button>
               </div>
 
               <ul className="grid gap-3 text-sm text-mist sm:grid-cols-3">
-                <BulletPoint text="Integrates into your current stack" />
-                <BulletPoint text="Automates repetitive work with guardrails" />
-                <BulletPoint text="Keeps people focused on high-leverage decisions" />
+                <BulletPoint text="Works with your EHR & portals" />
+                <BulletPoint text="Human sign-off before clinical submit" />
+                <BulletPoint text="Built for practice admins & RCM" />
               </ul>
             </motion.div>
 
@@ -303,8 +333,8 @@ export function LandingPage() {
         >
           <SectionHeading
             eyebrow="The problem"
-            title="Busywork quietly becomes the operating system."
-            description="Most teams do not lose momentum because they lack talent. They lose it because skilled people are buried under repetitive tasks, fragmented tools, and constant coordination overhead."
+            title="Front office and RCM capacity is burned by the same three queues."
+            description="Specialty clinics don’t lose throughput because they lack skilled people. They lose it because prior-auth packets, incomplete referrals, and inbox noise keep staff on repetitive chase work instead of exceptions and patients."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -315,44 +345,44 @@ export function LandingPage() {
         </motion.section>
 
         <motion.section
-          id="solution"
+          id="positioning"
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
         >
           <div className="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
             <SectionHeading
-              eyebrow="The solution"
-              title="AI woven directly into the way your business already operates."
-              description="UnitIntel maps real workflows, connects the systems involved, automates the repetitive steps, and leaves critical judgment where it belongs: with your team. The goal is not AI for its own sake. It is operational capacity without more chaos."
+              eyebrow="Positioning"
+              title="You don’t need another platform. You need capacity."
+              description="UnitIntel maps the workflows that burn front office and RCM — prior-auth packet prep, referral chase, inbox triage — then wires AI into existing EHR, portals, fax, and email so staff only touch exceptions."
             />
 
             <div className="grid gap-4 sm:grid-cols-2">
               <FeaturePanel
                 icon={Network}
-                title="Existing tools stay in play"
-                description="CRM, help desk, docs, spreadsheets, email, and internal systems become part of one cleaner execution layer."
+                title="Existing stack stays"
+                description="EHR, payer portals, fax, and email stay in place. We add orchestration and drafting — not a rip-and-replace."
               />
               <FeaturePanel
-                icon={Bot}
-                title="Automation where work repeats"
-                description="Drafting, triage, synthesis, updates, routing, enrichment, and reporting are handled automatically where appropriate."
+                icon={UserCheck}
+                title="Humans on the exceptions"
+                description="Routine assembly, chase, and triage run with AI assist. People review and own clinical submit and patient-facing sends."
               />
               <FeaturePanel
-                icon={Users}
-                title="Human review where trust matters"
-                description="Approvals, exceptions, sensitive interactions, and high-stakes decisions stay visible and easy to control."
+                icon={ClipboardCheck}
+                title="One queue at a time"
+                description="Start with prior-auth or referrals. Prove hours and cycle-time gains, then expand — inbox triage comes after a win."
               />
               <FeaturePanel
-                icon={Compass}
-                title="Capacity redirected to leverage"
-                description="Teams spend less time on process maintenance and more time on customers, strategy, product, and growth."
+                icon={ScanSearch}
+                title="Goals you can measure"
+                description="Hours per auth, days-to-decision, % referrals scheduled, time-to-schedule, leakage, staff touches."
               />
             </div>
           </div>
         </motion.section>
 
         <motion.section
-          aria-labelledby="outcomes-title"
+          aria-labelledby="goals-title"
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-12"
         >
@@ -360,41 +390,124 @@ export function LandingPage() {
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl space-y-3">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
-                  Outcomes
+                  Target metrics
                 </p>
                 <h2
-                  id="outcomes-title"
+                  id="goals-title"
                   className="text-balance text-3xl font-semibold tracking-tight text-foreground"
                 >
-                  The win is not a clever demo. It is measurable operating
-                  leverage.
+                  We optimize for clinic-ops metrics — not vanity AI demos.
                 </h2>
                 <p className="text-base leading-8 text-mist">
-                  Illustrative benchmark numbers below show the kind of gains
-                  strong workflow integration can unlock when repetitive work is
-                  removed at the source.
+                  Figures below are{" "}
+                  <span className="font-semibold text-foreground">
+                    goal metrics
+                  </span>{" "}
+                  we baseline and track in a sprint — not published live results.
+                  First case studies are in progress.
                 </p>
               </div>
-
-              <p className="max-w-sm text-sm leading-7 text-mist/[0.9]">
-                Placeholder metrics for planning and layout. Replace with live
-                client results as UnitIntel builds case studies.
-              </p>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {outcomeStats.map((stat) => (
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {goalMetrics.map((group) => (
                 <div
-                  key={stat.label}
+                  key={group.label}
                   className="rounded-[1.5rem] border border-white/10 bg-slate-950/30 p-5"
                 >
-                  <p className="text-4xl font-semibold tracking-[-0.05em] text-foreground">
-                    {stat.value}
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
+                    {group.label}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-mist">{stat.label}</p>
+                  <ul className="mt-4 space-y-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2 text-sm text-mist"
+                      >
+                        <CheckCircle2 className="h-4 w-4 shrink-0 text-accent" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          id="what-we-do"
+          {...fadeInUp}
+          className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
+        >
+          <SectionHeading
+            eyebrow="What we do"
+            title="Three queues. Prior-auth first. Referrals co-lead. Inbox after the win."
+            description="We only take on work that burns specialty-clinic front office and RCM capacity — and that can run inside tools you already use."
+          />
+
+          <div className="mt-10 grid gap-6">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-[0_20px_60px_rgba(5,9,20,0.35)]"
+              >
+                <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+                  <div className="space-y-5 border-b border-white/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent">
+                        <service.icon className="h-5 w-5" />
+                      </div>
+                      <span className="rounded-full border border-accent/30 bg-accent/[0.08] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                        {service.badge}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-semibold text-foreground">
+                      {service.title}
+                    </h3>
+                    <p className="text-base leading-8 text-mist">
+                      {service.description}
+                    </p>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
+                        Goal metrics
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {service.metrics.map((metric) => (
+                          <span
+                            key={metric}
+                            className="rounded-full border border-white/10 bg-slate-950/40 px-3 py-1.5 text-sm text-slate-200"
+                          >
+                            {metric}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 p-6 sm:p-8">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                      Typical flow
+                    </p>
+                    <ol className="space-y-3">
+                      {service.flow.map((step, index) => (
+                        <li
+                          key={step}
+                          className="flex gap-3 rounded-[1.25rem] border border-white/10 bg-slate-950/30 p-4"
+                        >
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-xs font-semibold text-accent">
+                            {index + 1}
+                          </span>
+                          <span className="text-sm leading-7 text-mist">
+                            {step}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.section>
 
@@ -405,8 +518,8 @@ export function LandingPage() {
         >
           <SectionHeading
             eyebrow="How it works"
-            title="A practical path from workflow friction to reliable throughput."
-            description="UnitIntel keeps the process simple: understand the work, automate the repetitive parts, keep humans in the loop, and refine until the system becomes a dependable part of operations."
+            title="From one painful queue to a dependable sprint outcome."
+            description="Practical path for practice admins, office managers, and RCM/ops leads: map the drag, wire AI into the existing stack, ship one sprint, measure, then expand."
           />
 
           <div className="mt-10 grid gap-5 lg:grid-cols-4">
@@ -430,19 +543,35 @@ export function LandingPage() {
         </motion.section>
 
         <motion.section
-          id="use-cases"
+          id="offer"
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
         >
           <SectionHeading
-            eyebrow="Use cases"
-            title="The work that compounds when repetitive tasks disappear."
-            description="UnitIntel is most valuable where people spend too much time coordinating, summarizing, reformatting, or pushing information from one place to another."
+            eyebrow="Offer"
+            title="Discovery → audit → one fixed-scope sprint."
+            description="Start with a 45-minute workflow discovery. If the queue is real, a paid 5-day throughput audit baselines hours and failure points, then a 4–6 week sprint ships the first automation."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {useCases.map((card) => (
-              <IconCard key={card.title} {...card} />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {offerItems.map((item) => (
+              <div
+                key={item.title}
+                className="flex flex-col rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_rgba(5,9,20,0.3)]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-accent">
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-accent-2">
+                  {item.detail}
+                </p>
+                <h3 className="mt-3 text-xl font-semibold text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-mist">
+                  {item.description}
+                </p>
+              </div>
             ))}
           </div>
         </motion.section>
@@ -455,8 +584,8 @@ export function LandingPage() {
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
             <SectionHeading
               eyebrow="Why UnitIntel"
-              title="A consultancy built for real operations, not AI theatre."
-              description="The fastest way to lose trust in AI is to promise magic and deliver more complexity. UnitIntel is designed around operational reality: existing tools, real constraints, measurable gains, and teams that still need control."
+              title="Built for specialty clinic ops — not generic B2B busywork."
+              description="ICP is physical specialty and multi-site ambulatory clinics: practice admins, office managers, RCM and ops leads. Not telehealth brands, not hospital enterprise platforms, not another “AI for any ops team” pitch."
             />
 
             <div className="space-y-4">
@@ -489,42 +618,36 @@ export function LandingPage() {
           {...fadeInUp}
           className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
         >
-          <SectionHeading
-            eyebrow="Social proof"
-            title="A proof-ready section designed to accept real client evidence later."
-            description="The structure below gives UnitIntel a polished trust layer now while staying honest about what is illustrative versus what should be replaced with live customer results."
-          />
-
-          <div className="mt-10 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-            <div className="flex flex-wrap gap-3">
-              {logos.map((logo) => (
-                <div
-                  key={logo}
-                  className="rounded-full border border-white/10 bg-slate-950/40 px-5 py-3 text-sm font-semibold tracking-[0.18em] text-slate-200"
-                >
-                  {logo}
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-sm leading-7 text-mist">
-              Placeholder marks shown for layout only. Swap in real client logos
-              once available.
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+              Proof
             </p>
-
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
-              {quotes.map((item) => (
+            <h2
+              id="proof-title"
+              className="mt-4 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            >
+              First specialty-clinic case studies in progress.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-8 text-mist sm:text-lg">
+              We are not inventing logos or testimonials. When prior-auth and
+              referral sprints ship measurable baselines — hours per auth,
+              days-to-decision, % scheduled, leakage — those results will live
+              here. Until then: book a discovery call and we&apos;ll baseline
+              your queue.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {[
+                "Multi-site ambulatory",
+                "Specialty front office",
+                "RCM / ops leads",
+                "Practice admins",
+                "Office managers",
+              ].map((area) => (
                 <div
-                  key={item.quote}
-                  className="rounded-[1.75rem] border border-white/10 bg-slate-950/40 p-6"
+                  key={area}
+                  className="rounded-full border border-white/10 bg-slate-950/40 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-slate-200"
                 >
-                  <MessageSquareQuote className="h-6 w-6 text-accent" />
-                  <p className="mt-5 text-lg leading-8 text-slate-100">
-                    “{item.quote}”
-                  </p>
-                  <div className="mt-6">
-                    <p className="font-semibold text-foreground">{item.name}</p>
-                    <p className="text-sm text-mist">{item.role}</p>
-                  </div>
+                  {area}
                 </div>
               ))}
             </div>
@@ -541,15 +664,17 @@ export function LandingPage() {
             <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-3xl space-y-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
-                  Final call to action
+                  Book a discovery call
                 </p>
                 <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                  If busywork is setting the speed limit, UnitIntel can remove it.
+                  Bring one prior-auth or referral queue. We&apos;ll map where
+                  capacity is leaking.
                 </h2>
                 <p className="text-lg leading-8 text-slate-100/[0.88]">
-                  Bring the workflows that eat your team&apos;s time. We&apos;ll
-                  map the friction, show where AI fits, and outline the fastest
-                  path to measurable throughput gains.
+                  45-minute workflow discovery for specialty and multi-site
+                  ambulatory clinics. If it&apos;s a fit, the next step is a
+                  paid 5-day throughput audit ($2.5–5k) and a fixed-scope
+                  4–6 week sprint on one queue.
                 </p>
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Button asChild size="lg">
@@ -564,7 +689,7 @@ export function LandingPage() {
                 </div>
                 <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/[0.4] p-4 sm:p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
-                    Contact
+                    Founder
                   </p>
                   <p className="mt-3 text-lg font-semibold text-foreground">
                     Tushar Khandelwal
@@ -598,15 +723,15 @@ export function LandingPage() {
                 <ul className="mt-4 space-y-3 text-sm leading-7 text-mist">
                   <li className="flex gap-3">
                     <CheckCircle2 className="mt-1 h-4 w-4 text-accent" />
-                    45-minute workflow discovery call
+                    45-minute specialty-clinic workflow discovery
                   </li>
                   <li className="flex gap-3">
                     <CheckCircle2 className="mt-1 h-4 w-4 text-accent" />
-                    Prioritized throughput audit with low-effort wins
+                    Paid 5-day throughput audit ($2.5–5k)
                   </li>
                   <li className="flex gap-3">
                     <CheckCircle2 className="mt-1 h-4 w-4 text-accent" />
-                    Recommended first automation sprint
+                    Fixed-scope 4–6 week sprint (PA or referrals)
                   </li>
                 </ul>
               </div>
@@ -620,7 +745,9 @@ export function LandingPage() {
               <p className="font-semibold uppercase tracking-[0.18em] text-foreground">
                 UnitIntel
               </p>
-              <p className="mt-2">5x throughput. Zero busywork.</p>
+              <p className="mt-2">
+                Specialty clinic capacity — prior-auth, referrals, inbox.
+              </p>
               <div className="mt-5 space-y-1">
                 <p className="font-semibold text-foreground">Tushar Khandelwal</p>
                 <p>Founder, UnitIntel</p>
@@ -648,16 +775,22 @@ export function LandingPage() {
                 Problem
               </Link>
               <Link
+                href="#what-we-do"
+                className="transition-colors hover:text-foreground"
+              >
+                What we do
+              </Link>
+              <Link
                 href="#how-it-works"
                 className="transition-colors hover:text-foreground"
               >
                 How it works
               </Link>
               <Link
-                href="#why-unitintel"
+                href="#offer"
                 className="transition-colors hover:text-foreground"
               >
-                Why UnitIntel
+                Offer
               </Link>
               <a
                 href="mailto:tushar@uniintel.org"
@@ -743,14 +876,14 @@ function HeroVisual() {
         <div className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-white/[0.08] pb-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.26em] text-accent">
-              UnitIntel flow layer
+              Prior-auth packet prep
             </p>
             <p className="mt-2 text-sm text-mist">
-              Busywork in, structured progress out.
+              Assemble · stage · human sign-off.
             </p>
           </div>
           <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-mist">
-            live orchestration
+            specialty clinic
           </div>
         </div>
 
@@ -759,7 +892,12 @@ function HeroVisual() {
             <SignalColumn
               title="Inputs"
               color="accent"
-              items={["Support queue", "CRM notes", "Weekly metrics", "Ops inbox"]}
+              items={[
+                "EHR chart pull",
+                "Payer portal rules",
+                "Fax / email inbound",
+                "Referral PDFs",
+              ]}
             />
             <div className="hidden items-center justify-center lg:flex">
               <motion.div
@@ -774,31 +912,30 @@ function HeroVisual() {
               title="Outcomes"
               color="accent-2"
               items={[
-                "Drafted replies",
-                "Clean updates",
-                "Escalation routing",
-                "Leadership brief",
+                "Auth packets staged",
+                "Status chase running",
+                "Referrals scheduled",
+                "Staff on exceptions",
               ]}
             />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
+            <MiniMetric label="Goal · hours / auth" value="↓" tone="accent" />
             <MiniMetric
-              label="Manual steps removed"
-              value="18"
-              tone="accent"
-            />
-            <MiniMetric
-              label="Average response acceleration"
-              value="3.4x"
+              label="Goal · days to decision"
+              value="↓"
               tone="accent-2"
             />
             <MiniMetric
-              label="Human approval checkpoints"
-              value="2"
+              label="Goal · % refs scheduled"
+              value="↑"
               tone="white"
             />
           </div>
+          <p className="text-center text-[11px] uppercase tracking-[0.18em] text-mist/80">
+            Illustrative goal directions — not live results
+          </p>
         </div>
       </div>
     </motion.div>
@@ -823,7 +960,9 @@ function SignalColumn({
     <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-4">
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-foreground">{title}</p>
-        <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] ${badgeClass}`}>
+        <span
+          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] ${badgeClass}`}
+        >
           active
         </span>
       </div>

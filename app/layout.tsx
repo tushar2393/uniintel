@@ -14,9 +14,18 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UnitIntel | 5x throughput. Zero busywork.",
+  title:
+    "UnitIntel | Prior-auth & referral capacity for specialty clinics",
   description:
-    "UnitIntel is an AI integration consultancy that embeds AI into existing workflows to eliminate repetitive work and unlock dramatically higher throughput.",
+    "UnitIntel helps specialty and multi-site ambulatory clinics cut prior-auth packet prep, referral chase, and inbox triage — inside the EHR, portals, fax, and email they already run, with human checkpoints. No credentialing. Book a 45-minute workflow discovery.",
+  keywords: [
+    "specialty clinic prior authorization",
+    "referral chase automation",
+    "ambulatory clinic RCM",
+    "prior auth packet prep",
+    "clinic inbox triage",
+    "practice admin workflow",
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
